@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            background-color: #606C38;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .input-container {
+            background-color: #FEFAE0;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px; /* Adjust the max-width to your preference */
+            width: 90%; /* Adjust the width to your preference */
+        }
+
+        .input-container label {
+            color: #283618;
+            margin-bottom: 10px;
+        }
+
+        .input-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #283618;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .input-container button {
+            background-color: #DDA15E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .output-container p {
+            background-color: #FEFAE0;
+            padding: 10px;
+            border-radius: 5px;
+            color: #283618;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-container">
+            <label for="url">Enter your URL:</label>
+            <input type="text" id="url" placeholder="https://example.com">
+            <button onclick="shortenURL()">Shorten</button>
+        </div>
+        <div class="output-container">
+            <p>Shortened URL: <span id="shortenedUrl"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function shortenURL() {
+            const urlInput = document.getElementById("url").value;
+            // Replace this with your actual URL shortening logic
+            const shortenedUrl = "https://short.url/abc123";
+            const shortenedUrlSpan = document.getElementById("shortenedUrl");
+            shortenedUrlSpan.textContent = shortenedUrl;
+            document.querySelector(".output-container").style.display = "block";
+        }
+    </script>
+</body>
+</html>
