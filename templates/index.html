@@ -79,15 +79,19 @@
             <p>Shortened URL: <span id="shortenedUrl"></span></p>
         </div>
     </div>
-
     <script>
         function shortenURL() {
             const urlInput = document.getElementById("url").value;
-            const shortenedUrl = "https://short.url/abc123";
+            const shortenedUrl = "https://short.url/1234abcd";
             const shortenedUrlSpan = document.getElementById("shortenedUrl");
             shortenedUrlSpan.textContent = shortenedUrl;
             document.querySelector(".output-container").style.display = "block";
         }
     </script>
+
+
+
+
+    
 </body>
 </html>
