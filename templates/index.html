@@ -27,8 +27,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 600px; 
-            width: 90%; 
+            max-width: 600px;
+            width: 90%;
         }
 
         .input-container label {
@@ -66,6 +66,7 @@
             color: #283618;
             font-weight: bold;
         }
+
     </style>
 </head>
 <body>
@@ -79,6 +80,40 @@
             <p>Shortened URL: <span id="shortenedUrl"></span></p>
         </div>
     </div>
+
+    <main>
+        <h1>URL Shortener</h1>
+        <form id="post-form">
+            <!-- Include the CSRF token here -->
+            <input type="hidden" name="csrfmiddlewaretoken" value="{% csrf_token %}">
+            <input type="text" name="link" id="link" placeholder="Enter URL here">
+            <div class="buttons">
+                <button type="submit" id="shorten">Shorten</button>
+            </div>
+        </form>
+  
+        <section id="section"><h2></h2></section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).on('submit','#post-form',function(e){
+            e.preventDefault();
+
+            $.ajax({
+                type:'POST',
+                url:'/create',
+                data:{
+                    link:$('#link').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function(data){
+                    $('h2').html("www.surls.ga/"+data)
+                }
+            });
+        });
+    </script>
+
     <script>
         function shortenURL() {
             const urlInput = document.getElementById("url").value;
@@ -88,10 +123,5 @@
             document.querySelector(".output-container").style.display = "block";
         }
     </script>
-
-
-
-
-    
 </body>
 </html>
