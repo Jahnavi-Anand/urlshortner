@@ -15,19 +15,19 @@
         }
         body {
             min-height: 100vh;
-            font-family: "Arial, sans-serif"; /* Change the font-family to match the second website */
+            font-family: "Arial, sans-serif"; 
             line-height: 1.5;
-            color: #283618; /* Change the text color to match the second website */
-            background-color: #606C38; /* Change the background color to match the second website */
+            color: #283618; 
+            background-color: #606C38;
         }
         main {
-            max-width: 600px; /* Adjust the max-width to match the second website */
-            width: 90%; /* Adjust the width to match the second website */
-            border: 2.5px solid #283618; /* Change the border color to match the second website */
-            border-radius: 10px; /* Adjust the border-radius to match the second website */
+            max-width: 600px; 
+            width: 90%; 
+            border: 2.5px solid #283618; 
+            border-radius: 10px; 
             box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
                 0 5px 5px rgba(17, 17, 17, 0.25);
-            background-color: #FEFAE0; /* Change the background color to match the second website */
+            background-color: #FEFAE0;
         }
         h1 {
             padding: 1rem;
@@ -37,7 +37,7 @@
         button {
             font-family: inherit;
             line-height: inherit;
-            color: #283618; /* Change the text color to match the second website */
+            color: #283618; 
             border: 0;
             padding: 1rem;
         }
@@ -51,16 +51,16 @@
         button {
             cursor: pointer;
             flex: 1;
-            background-color: #DDA15E; /* Change the button color to match the second website */
+            background-color: #DDA15E; 
             color: white;
             &:hover {
-                background-color: #283618; /* Change the button hover color to match the second website */
+                background-color: #283618;
             }
         }
         section {
             min-height: 120px;
             text-align: center;
-            background-color: #FEFAE0; /* Change the section background color to match the second website */
+            background-color: #FEFAE0; 
         }
     </style>
 </head>
@@ -89,7 +89,7 @@
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             },
             success: function(data){
-                $('h2').html("www.surls.ga/"+data)
+                $('h2').html("localhost:8000/"+data)
             }
         });
     });
