@@ -27,13 +27,12 @@
             width: 90%; 
             border: 2.5px solid #283618; 
             border-radius: 10px; 
-            box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
-                0 5px 5px rgba(17, 17, 17, 0.25);
             background-color: #FEFAE0;
         }
         h1 {
             padding: 1rem;
-            color: #283618; 
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Center-align the text */
         }
         input,
         button {
@@ -50,12 +49,14 @@
         .buttons {
             display: flex;
         }
+        /* Add spacing and adjust button size */
         .input-container {
             margin-bottom: 1rem;
         }
+        /* Reduce button width */
         .small-button {
             padding: 0.5rem;
-            width: auto; 
+            width: auto; /* Set width to auto to reduce button length */
         }
         button {
             cursor: pointer;
@@ -63,6 +64,7 @@
             background-color: #DDA15E; 
             color: white;
         }
+        /* Hover style for the button */
         button:hover {
             background-color: #283618;
         }
@@ -75,13 +77,16 @@
 </head>
 <body>
 <main>
+    <!-- Centered and all caps text -->
     <h1>URL Shortener</h1>
     <form id="post-form" method="POST" action="/create">
         {% csrf_token %}
+        <!-- Add a class to the input element -->
         <div class="input-container">
             <input type="text" name="link" id="link" placeholder="Enter URL here" class="input-box">
         </div>
         <div class="buttons">
+            <!-- Add a class to the button element -->
             <button type="submit" id="shorten" class="small-button">Shorten</button>
         </div>
     </form>
@@ -101,7 +106,7 @@
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             },
             success: function(data){
-                $('h2').html("www.surls.ga/"+data)
+                $('h2').html("localhost:8000//"+data)
             }
         });
     });
