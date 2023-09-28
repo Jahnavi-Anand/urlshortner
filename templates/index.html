@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <style>
@@ -31,7 +33,7 @@
         }
         h1 {
             padding: 1rem;
-            color: #283618; /* Change the text color to match the second website */
+            color: #283618; 
         }
         input,
         button {
@@ -48,14 +50,21 @@
         .buttons {
             display: flex;
         }
+        .input-container {
+            margin-bottom: 1rem;
+        }
+        .small-button {
+            padding: 0.5rem;
+            width: auto; 
+        }
         button {
             cursor: pointer;
             flex: 1;
             background-color: #DDA15E; 
             color: white;
-            &:hover {
-                background-color: #283618;
-            }
+        }
+        button:hover {
+            background-color: #283618;
         }
         section {
             min-height: 120px;
@@ -64,13 +73,16 @@
         }
     </style>
 </head>
+<body>
 <main>
     <h1>URL Shortener</h1>
     <form id="post-form" method="POST" action="/create">
         {% csrf_token %}
-        <input type="text" name="link" id="link" placeholder="Enter URL here">
+        <div class="input-container">
+            <input type="text" name="link" id="link" placeholder="Enter URL here" class="input-box">
+        </div>
         <div class="buttons">
-            <button type="submit" id="shorten">Shorten</button>
+            <button type="submit" id="shorten" class="small-button">Shorten</button>
         </div>
     </form>
 
@@ -89,8 +101,10 @@
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             },
             success: function(data){
-                $('h2').html("localhost:8000/"+data)
+                $('h2').html("www.surls.ga/"+data)
             }
         });
     });
 </script>
+</body>
+</html>
