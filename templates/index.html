@@ -1,117 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <style>
-        body {
-            background-color: #606C38;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
         }
-        .container {
+        body,
+        section {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            padding: 1rem;
         }
-        .input-container {
-            background-color: #FEFAE0;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 600px;
-            width: 90%;
+        body {
+            min-height: 100vh;
+            font-family: "Arial, sans-serif"; /* Change the font-family to match the second website */
+            line-height: 1.5;
+            color: #283618; /* Change the text color to match the second website */
+            background-color: #606C38; /* Change the background color to match the second website */
         }
-        .input-container label {
-            color: #283618;
-            margin-bottom: 10px;
+        main {
+            max-width: 600px; /* Adjust the max-width to match the second website */
+            width: 90%; /* Adjust the width to match the second website */
+            border: 2.5px solid #283618; /* Change the border color to match the second website */
+            border-radius: 10px; /* Adjust the border-radius to match the second website */
+            box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
+                0 5px 5px rgba(17, 17, 17, 0.25);
+            background-color: #FEFAE0; /* Change the background color to match the second website */
         }
-        .input-container input[type="text"] {
+        h1 {
+            padding: 1rem;
+            color: #283618; /* Change the text color to match the second website */
+        }
+        input,
+        button {
+            font-family: inherit;
+            line-height: inherit;
+            color: #283618; /* Change the text color to match the second website */
+            border: 0;
+            padding: 1rem;
+        }
+        input {
+            box-sizing: border-box;
             width: 100%;
-            padding: 10px;
-            border: 1px solid #283618;
-            border-radius: 5px;
-            outline: none;
         }
-        .input-container button {
-            background-color: #DDA15E;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+        .buttons {
+            display: flex;
+        }
+        button {
             cursor: pointer;
-            margin-top: 10px;
+            flex: 1;
+            background-color: #DDA15E; /* Change the button color to match the second website */
+            color: white;
+            &:hover {
+                background-color: #283618; /* Change the button hover color to match the second website */
+            }
         }
-        .output-container {
-            margin-top: 20px;
-            display: none;
-        }
-        .output-container p {
-            background-color: #FEFAE0;
-            padding: 10px;
-            border-radius: 5px;
-            color: #283618;
-            font-weight: bold;
+        section {
+            min-height: 120px;
+            text-align: center;
+            background-color: #FEFAE0; /* Change the section background color to match the second website */
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="input-container">
-            <label for="url">Enter your URL:</label>
-            <input type="text" id="url" placeholder="https://abc.com">
-            <button onclick="shortenURL()">Shorten</button>
+<main>
+    <h1>URL Shortener</h1>
+    <form id="post-form" method="POST" action="/create">
+        {% csrf_token %}
+        <input type="text" name="link" id="link" placeholder="Enter URL here">
+        <div class="buttons">
+            <button type="submit" id="shorten">Shorten</button>
         </div>
-        <div class="output-container">
-            <p>Shortened URL: <span id="shortenedUrl"></span></p>
-        </div>
-    </div>
+    </form>
 
-    <main>
-        <h1>URL Shortener</h1>
-        <form id="post-form">
-            <input type="hidden" name="csrfmiddlewaretoken" value="{% csrf_token %}">
-            <input type="text" name="link" id="link" placeholder="Enter URL here">
-            <div class="buttons">
-                <button type="submit" id="shorten">Shorten</button>
-            </div>
-        </form>
-  
-        <section id="section"><h2></h2></section>
-    </main>
+    <section id="section"><h2></h2></section>
+</main>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).on('submit','#post-form',function(e){
-            e.preventDefault();
+<script type="text/javascript">
+    $(document).on('submit','#post-form',function(e){
+        e.preventDefault();
 
-            $.ajax({
-                type:'POST',
-                url:'/create',
-                data:{
-                    link:$('#link').val(),
-                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-                },
-                success: function(data){
-                    $('h2').html("www.surls.ga/"+data)
-                }
-            });
+        $.ajax({
+            type:'POST',
+            url:'/create',
+            data:{
+                link:$('#link').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(data){
+                $('h2').html("www.surls.ga/"+data)
+            }
         });
-    </script>
-    <script>
-        function shortenURL() {
-            const urlInput = document.getElementById("url").value;
-            const shortenedUrl = "https://short.url/1234abcd";
-            const shortenedUrlSpan = document.getElementById("shortenedUrl");
-            shortenedUrlSpan.textContent = shortenedUrl;
-            document.querySelector(".output-container").style.display = "block";
-        }
-    </script>
-</body>
-</html>
+    });
+</script>
