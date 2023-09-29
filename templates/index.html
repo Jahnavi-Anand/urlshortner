@@ -20,7 +20,8 @@
             font-family: "Arial, sans-serif"; 
             line-height: 1.5;
             color: #283618; 
-            background-color: #606C38;
+            /* background-color: #606C38; */
+            background: linear-gradient(45deg,#0a0a0a,#3a4452);
         }
         main {
             max-width: 600px; 
@@ -31,8 +32,8 @@
         }
         h1 {
             padding: 1rem;
-            text-transform: uppercase; 
-            text-align: center;
+            text-transform: uppercase; /* Convert text to all caps */
+            text-align: center; /* Center-align the text */
         }
         input,
         button {
@@ -49,13 +50,14 @@
         .buttons {
             display: flex;
         }
+        /* Add spacing and adjust button size */
         .input-container {
             margin-bottom: 1rem;
         }
         /* Reduce button width */
         .small-button {
             padding: 0.5rem;
-            width: auto; 
+            width: auto; /* Set width to auto to reduce button length */
         }
         button {
             cursor: pointer;
@@ -76,13 +78,16 @@
 </head>
 <body>
 <main>
+    <!-- Centered and all caps text -->
     <h1>URL Shortener</h1>
     <form id="post-form" method="POST" action="/create">
         {% csrf_token %}
+        <!-- Add a class to the input element -->
         <div class="input-container">
             <input type="text" name="link" id="link" placeholder="Enter URL here" class="input-box">
         </div>
         <div class="buttons">
+            <!-- Add a class to the button element -->
             <button type="submit" id="shorten" class="small-button">Shorten</button>
         </div>
     </form>
@@ -91,20 +96,18 @@
 </main>
 
 <script type="text/javascript">
-    $(document).on('submit', '#post-form', function (e) {
+    $(document).on('submit','#post-form',function(e){
         e.preventDefault();
 
         $.ajax({
-            type: 'POST',
-            url: '/create',
-            data: {
-                link: $('#link').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            type:'POST',
+            url:'/create',
+            data:{
+                link:$('#link').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             },
-            success: function (data) {
-                var shortenedLink = "localhost:8000//" + data;
-                var anchorTag = '<a href="' + shortenedLink + '" target="_blank">' + shortenedLink + '</a>';
-                $('h2').html(anchorTag);
+            success: function(data){
+                $('h2').html("localhost:8000/"+data)
             }
         });
     });
