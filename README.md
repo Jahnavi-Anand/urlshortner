@@ -9,7 +9,7 @@ The website is a web application developed using the Django web framework, a pop
    - Users can input long URLs into a text input field.
 
 3. CSRF Protection:
-   - The "{% csrf_token %}" template tag is used to include a Cross-Site Request Forgery (CSRF) token within the form.
+   - The /*{% csrf_token %}*/ template tag is used to include a Cross-Site Request Forgery (CSRF) token within the form.
    - CSRF protection is a security measure that guards against malicious requests.
 
 4. jQuery Integration:
