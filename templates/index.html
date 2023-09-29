@@ -23,8 +23,7 @@
             min-height: 100vh;
             font-family: "Arial, sans-serif";
             line-height: 1.5;
-            /* background: url('./wallpaperflare.com_wallpaper.jpg'); */
-            background: linear-gradient(45deg,#0a0a0a,#3a4452);;
+            background: linear-gradient(45deg, #0a0a0a, #3a4452);
             background-position: center;
             background-size: cover;
             overflow: hidden;
@@ -35,7 +34,6 @@
             max-width: 600px;
             width: 90%;
             border: 2.5px solid #8d2a2a;
-            box-shadow: 7px 7px 5px rgb(59, 59, 185);
             border-radius: 10px;
             background: transparent;
             backdrop-filter: blur(15px);
@@ -54,14 +52,9 @@
         button {
             font-family: inherit;
             line-height: inherit;
-            color: #283618;
+            color: white; 
             border: 0;
             padding: 1rem;
-        }
-
-        input {
-            box-sizing: border-box;
-            width: 100%;
             background: transparent;
             border: 2px solid white;
             border-left: 0px;
@@ -69,26 +62,23 @@
             border-top: 0px;
         }
 
+        input {
+            box-sizing: border-box;
+            width: 100%;
+        }
+
         .buttons {
             display: flex;
         }
 
-        /* Add spacing and adjust button size */
         .input-container {
             margin-bottom: 1rem;
             background: transparent;
-            color: white;
-            border-left: 0px;
-            border-right: 0px;
-            border-top: 0px;
         }
 
-        /* Reduce button width */
         .small-button {
             padding: 0.5rem;
             width: auto;
-            
-            /* Set width to auto to reduce button length */
         }
 
         button {
@@ -96,13 +86,12 @@
             margin-right: 200px;
             cursor: pointer;
             flex: 1;
-            background: linear-gradient(45deg, rgba(9,75,121,1) 0%, rgba(13,2,191,0.644782913165266) 22%, rgba(0,212,255,0.9248949579831933) 72%, rgba(0,212,255,0.9248949579831933) 100%);
+            background: linear-gradient(45deg, rgba(9, 75, 121, 1) 0%, rgba(13, 2, 191, 0.644782913165266) 22%,
+                rgba(0, 212, 255, 0.9248949579831933) 72%, rgba(0, 212, 255, 0.9248949579831933) 100%);
             color: white;
             border-radius: 20px;
-           
         }
 
-        /* Hover style for the button */
         button:hover {
             background-color: #6eb023;
         }
@@ -114,23 +103,18 @@
             background: transparent;
             backdrop-filter: blur(15px);
         }
-
-        
     </style>
 </head>
 
 <body>
     <main id="main-cont">
-        <!-- Centered and all caps text -->
         <h1>URL Shortener</h1>
         <form id="post-form" method="POST" action="/create">
             {% csrf_token %}
-            <!-- Add a class to the input element -->
             <div class="input-container">
                 <input type="text" name="link" id="link" placeholder="Enter URL here" class="input-box">
             </div>
             <div class="buttons">
-                <!-- Add a class to the button element -->
                 <button type="submit" id="shorten" class="small-button">Shorten</button>
             </div>
         </form>
@@ -152,11 +136,10 @@
                     csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                 },
                 success: function (data) {
-                    $('h2').html("http://127.0.0.1:5500/" + data)
+                    $('h2').html("localhost:8000/" + data)
                 }
             });
         });
     </script>
 </body>
-
 </html>
