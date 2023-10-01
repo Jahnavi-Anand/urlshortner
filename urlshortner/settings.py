@@ -26,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -98,7 +97,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
 
 LANGUAGE_CODE = 'en-us'
 
@@ -113,6 +111,5 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

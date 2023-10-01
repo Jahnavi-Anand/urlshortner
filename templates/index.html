@@ -103,25 +103,34 @@
             background: transparent;
             backdrop-filter: blur(15px);
         }
+
     </style>
+    
 </head>
 
 <body>
     <main id="main-cont">
+
         <h1>URL Shortener</h1>
+
         <form id="post-form" method="POST" action="/create">
             {% csrf_token %}
+
             <div class="input-container">
                 <input type="text" name="link" id="link" placeholder="Enter URL here" class="input-box">
             </div>
+
             <div class="buttons">
                 <button type="submit" id="shorten" class="small-button">Shorten</button>
             </div>
+
         </form>
 
         <section id="section">
+
             <h2></h2>
         </section>
+
     </main>
 
     <script type="text/javascript">
