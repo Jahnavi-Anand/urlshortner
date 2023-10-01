@@ -5,9 +5,10 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
-    </script>
+        </script>
 
     <style>
+
         *,
         *::before,
         *::after {
@@ -53,7 +54,7 @@
         button {
             font-family: inherit;
             line-height: inherit;
-            color: white; 
+            color: white;
             border: 0;
             padding: 1rem;
             background: transparent;
@@ -88,7 +89,7 @@
             cursor: pointer;
             flex: 1;
             background: linear-gradient(45deg, rgba(9, 75, 121, 1) 0%, rgba(13, 2, 191, 0.644782913165266) 22%,
-                rgba(0, 212, 255, 0.9248949579831933) 72%, rgba(0, 212, 255, 0.9248949579831933) 100%);
+                    rgba(0, 212, 255, 0.9248949579831933) 72%, rgba(0, 212, 255, 0.9248949579831933) 100%);
             color: white;
             border-radius: 20px;
         }
@@ -115,6 +116,7 @@
         <h1>URL Shortener</h1>
 
         <form id="post-form" method="POST" action="/create">
+
             {% csrf_token %}
 
             <div class="input-container">
@@ -146,10 +148,12 @@
                     csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                 },
                 success: function (data) {
-                    $('h2').html("<a href="+ "http://localhost:8000/" + data +" target=\"_blank\">localhost:8000/" + data+"</a>")
+                    $('h2').html("<a href=" + "http://localhost:8000/" + data + " target=\"_blank\">localhost:8000/" + data + "</a>")
                 }
             });
         });
+        
     </script>
 </body>
+
 </html>
